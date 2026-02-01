@@ -1,0 +1,7 @@
+const status = document.getElementById("status");
+
+document.getElementById("test").onclick = async () => {
+  status.textContent = "Playing audio...";
+  await Audio.play();
+  status.textContent = "Done";
+};
