@@ -1,7 +1,16 @@
-const status = document.getElementById("status");
+const statusEl = document.getElementById("status");
+const testBtn = document.getElementById("test");
 
-document.getElementById("test").onclick = async () => {
-  status.textContent = "Playing audio...";
-  await Audio.play();
-  status.textContent = "Done";
-};
+testBtn.addEventListener("click", async () => {
+  try {
+    statusEl.textContent = "Playing audio…";
+
+    // THIS is the correct call
+    await window.audioAPI.play("./audio/test.mp3");
+
+    statusEl.textContent = "Done";
+  } catch (err) {
+    statusEl.textContent = "Playback failed";
+    console.error(err);
+  }
+});

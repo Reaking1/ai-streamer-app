@@ -16,10 +16,12 @@ function createWindow() {
     resizable: false,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
+      contextIsolation: true,
+      nodeIntegration: false,
     },
   });
 
-  win.loadFile("render/index.html");
+  win.loadFile(path.join(__dirname, "render/index.html"));
 
   win.on("close", (e) => {
     e.preventDefault();
